@@ -1,0 +1,37 @@
+﻿<Window x:Class="SpeedWriterWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpeedWriterWPF"
+        mc:Ignorable="d"
+        Title="Измерение скорости печатания" Height="400" Width="800"
+        ResizeMode="NoResize" PreviewTextInput="Window_PreviewTextInput" Name="MainWin">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Fill="OrangeRed"/>
+        <Rectangle Grid.Row="1" Grid.Column="0"  Fill="OliveDrab"/>
+        <Rectangle Grid.Row="1" Grid.Column="1"  Fill="Orange" Grid.ColumnSpan="2"/>
+        <Rectangle Grid.Row="1" Grid.Column="3"  Fill="OliveDrab"/>
+        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Fill="OrangeRed"/>
+        <Label x:Name="OldText1" Grid.Column="0" Grid.ColumnSpan="2" Background="white" Margin="20,20,0,20" FontSize="35" BorderBrush="Black" BorderThickness="2" 
+              DataContext="{Binding Path=RunningLine}"  Content="{Binding Path=OldText}" HorizontalContentAlignment="Right"/>
+        <Label x:Name="NewText1" Grid.Column="2" Grid.ColumnSpan="2" Background="white" Margin="0,20,20,20" FontSize="35"
+               BorderBrush="Black" BorderThickness="2" DataContext="{Binding Path=RunningLine}" Content="{Binding Path=NewText}"/>
+        <TextBlock x:Name="CountdownText"  FontSize="60" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="40"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                   DataContext="{Binding Path=Countdown}" Text="{Binding Path=Count}"/>
+        <Button x:Name="Retry" Content="Еще раз" FontSize="30" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="20"
+                Background="OliveDrab" BorderBrush="ForestGreen" BorderThickness="2" Click="Retry_Click" IsEnabled="False"/>
+    </Grid>
+</Window>
